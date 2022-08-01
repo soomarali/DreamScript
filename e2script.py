@@ -1,15 +1,257 @@
 # -*- coding: utf-8 -*-
 # code: BY MOHAMED_OS
 
-# ###########################################
-# SCRIPT : DOWNLOAD AND INSTALL E2script
-# ###########################################
-#
-# Command: python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2script.py -qO -)"
-#
-# ###########################################
+from __future__ import print_function
 
-from zlib import decompress
-from base64 import b64decode
+import os
+import json
+import socket
 
-exec(decompress(b64decode('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')))
+from datetime import datetime
+from ssl import OPENSSL_VERSION as ssl
+from sys import version, version_info, path
+from time import sleep
+
+
+try:
+    from boxbranding import getImageVersion, getImageBuild, getImageDistro
+except ImportError:
+    path.append("/usr/lib/enigma2/python")
+    from boxbranding import getImageVersion, getImageBuild, getImageDistro
+
+try:
+    from urllib.request import Request, urlopen
+    from urllib.error import URLError, HTTPError
+except ImportError:
+    from urllib2 import Request, urlopen, URLError, HTTPError
+
+
+# colors
+C = "\033[0m"     # clear (end)
+R = "\033[0;31m"  # red (error)
+G = "\033[0;32m"  # green (process)
+B = "\033[0;36m"  # blue (choice)
+Y = "\033[0;33m"  # yellow (info)
+
+URL = 'https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/'
+
+if hasattr(__builtins__, 'raw_input'):
+    input = raw_input
+
+PY = version_info.major
+now = datetime.now()
+
+
+def info(item):
+    try:
+        req = Request('{}packages.json'.format(URL))
+        req.add_header(
+            'User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0')
+        response = urlopen(req)
+        link = json.loads(response.read()).get(item)
+        if item == 'package':
+            if PY == 3:
+                return list(map(lambda x: x.replace('python', 'python3'), link))
+        return link
+    except HTTPError as e:
+        print('HTTP Error code: ', e.code)
+    except URLError as e:
+        print('URL Error: ', e.reason)
+
+
+def banner():
+    os.system('clear')
+    print(B)
+    print(r"""⠀⠀⡶⠛⠲⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡶⠚⢶⡀⠀
+⢰⠛⠃⠀⢠⣏⠀⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣄⣀⡀⠀⠀⠀⣸⠇⠀⠈⠙⣧
+⠸⣦⣤⣄⠀⠙⢷⣤⣶⠟⠛⢉⣁⣤⣤⣤⣤⣀⣉⠙⠻⢷⣤⡾⠋⢀⣤⣤⣴⠏
+⠀⠀⠀⠈⠳⣤⡾⠋⣀⣴⣿⣿⠿⠿⠟⠛⠿⠿⣿⣿⣶⣄⠙⢿⣦⠟⠁⠀⠀⠀
+⠀⠀⠀⢀⣾⠟⢀⣾⣿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⣿⣷⡄⠹⣷⡀⠀⠀⠀
+⠀⠀⠀⣾⡏⢠⣿⣿⡯⠤⠤⠤⠒⠒⠒⠒⠒⠒⠒⠤⠤⠽⣿⣿⡆⠹⣷⡀⠀⠀
+⠀⠀⢸⣟⣠⡿⠿⠟⠒⣒⣒⣉⣉⣉⣉⣉⣉⣉⣉⣉⣒⣒⡛⠻⠿⢤⣹⣇⠀⠀
+⠀⠀⣾⡭⢤⣤⣠⡞⠉⠁⢀⣀⣀⠀⠀⠀⠀⢀⣀⣀⠀⠈⢹⣦⣤⡤⠴⣿⠀⠀
+⠀⠀⣿⡇⢸⣿⣿⣇⠀⣼⣿⣿⣿⣷⠀⠀⣼⣿⣿⣿⣷⠀⢸⣿⣿⡇⠀⣿⠀⠀
+⠀⠀⢻⡇⠸⣿⣿⣿⡄⢿⣿⣿⣿⡿⠀⠀⢿⣿⣿⣿⡿⢀⣿⣿⣿⡇⢸⣿⠀⠀
+⠀⠀⠸⣿⡀⢿⣿⣿⣿⣆⠉⠛⠋⠀⢴⣶⠀⠉⠛⠉⣠⣿⣿⣿⡿⠀⣾⠇⠀⠀
+⠀⠀⠀⢻⣷⡈⢻⣿⣿⣿⣿⣶⣤⣀⣈⣁⣀⡤⣴⣿⣿⣿⣿⡿⠁⣼⠏⠀⠀⠀
+⠀⠀⠀⢀⣽⣷⣄⠙⢿⣿⣿⡟⢲⠧⡦⠼⠤⢷⢺⣿⣿⡿⠋⣠⣾⢿⣄⠀⠀⠀
+⣰⠟⠛⠛⠁⣨⡿⢷⣤⣈⠙⢿⡙⠒⠓⠒⠒⠚⡹⠛⢁⣤⣾⠿⣧⡀⠙⠋⠙⣆
+⠹⣤⡀⠀⠐⡏⠀⠀⠉⠛⠿⣶⣿⣶⣤⣤⣤⣾⣷⠾⠟⠋⠀⠀⢸⡇⠀⢠⣤⠟
+⠀⠀⠳⢤⠾⠃⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠘⠷⠤⠾⠁⠀""")
+    print(C)
+    print("   Written by {}MOHAMED_OS{} (͡๏̯͡๏) {}ver{}: {}\n".format(
+        B, C, R, C, info('version')))
+    print((now.strftime("%d-%m-%Y %X")).rjust(25))
+
+
+def image():
+    global status, update, install
+    if os.path.exists('/etc/opkg/opkg.conf'):
+        status = '/var/lib/opkg/status'
+        update = 'opkg update >/dev/null 2>&1'
+        install = 'opkg install'
+    else:
+        status = '/var/lib/dpkg/status'
+        update = 'apt-get update >/dev/null 2>&1'
+        install = 'apt-get install'
+    return os.path.exists('/etc/opkg/opkg.conf')
+
+
+def check():
+    package_list = info('package')
+    with open(status) as f:
+        for c in f.readlines():
+            if c.startswith('Package:'):
+                pkg = c[c.index(' '):].strip()
+                while (package_list.count(pkg)):
+                    package_list.remove(pkg)
+    return package_list
+
+
+def shell(cmd): return os.popen(cmd).read().strip()
+
+
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
+
+def system_info():
+
+    if len(getImageBuild()) < 6:
+        date = getImageBuild()
+    else:
+        date = datetime.strptime(
+            getImageBuild(), '%Y%m%d').strftime('%d-%m-%Y')
+    ram = shell("free | grep Mem  | awk '{ print $4 }'")
+    disk = shell("df -h | awk 'NR == 2 {print $4}'")
+
+    os.system('clear')
+    print(Y)
+    print(r"""⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⣾⣿⣿⣿⣿⣿⣿⣷⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⣀⣠⣿⣿⣄⣀⡀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀
+⠀⠀⠀⣠⣾⡟⠀⠀⣀⣴⣾⣿⠿⠿⠿⠿⠿⠿⢿⣷⣦⣄⠀⠀⠻⣿⣄⠀⠀⠀
+⠀⠀⣴⣿⠋⠀⣠⣾⡿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣷⣦⡀⠘⣿⣧⠀⠀
+⠀⣼⣿⣿⣷⣾⡿⢋⣤⣶⣶⣦⣄⠀⠀⠀⠀⢀⣤⣶⣶⣤⡘⢿⣿⣿⣿⣿⣧⠀
+⢰⣿⠃⠀⣿⡿⢁⣾⣿⣿⣿⣿⣿⣇⠀⠀⢠⣿⣿⣿⣿⣿⣿⡆⢻⣿⡇⠈⣿⣇
+⢿⡏⠀⢸⣿⠇⠘⣿⣿⣿⣿⣿⣿⡟⠀⠀⢸⣿⣿⣿⣿⣿⣿⠇⠈⣿⣧⠀⠸⣿
+⠀⠀⠀⣾⣿⠀⠀⠘⠿⣿⣿⡿⠏⠀⢀⡀⠀⠙⢿⣿⣿⡿⠋⠀⠀⢹⣿⠀⠀⠀
+⠀⠀⠀⢿⣿⣄⡀⠀⠀⠀⠀⠀⠀⠀⠺⠟⠀⠀⠀⠀⠀⠀⣀⣀⣀⣸⣿⠀⠀⠀
+⢿⣧⠀⢸⣿⡟⠛⣿⡿⠿⠿⣿⠿⠿⢿⣿⠿⠿⣿⡿⠿⢿⣿⠟⠻⣿⡿⠀⣸⣿
+⠸⣿⣆⢀⣿⣷⡀⢸⡇⠀⠀⣿⠀⠀⢸⣿⠀⠀⣿⡇⠀⢸⣿⠀⣼⣿⡇⢠⣿⠇
+⠀⠹⣿⣿⡿⢿⣷⣿⡇⠀⠀⣿⠀⠀⢸⣿⠀⠀⣿⡇⠀⢸⣿⣾⣿⠿⣿⣿⡟⠀
+⠀⠀⠹⣿⣦⠀⠙⢿⣿⣤⣠⣿⡆⠀⢸⣿⠀⠀⣿⣷⣠⣾⡿⠟⠁⣰⣿⠟⠀⠀
+⠀⠀⠀⠈⢿⣷⡀⠀⠉⠻⢿⣿⣷⣶⣾⣿⣶⣶⣿⡿⠟⠋⠀⠀⣼⡿⠋⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⠀⠀⠀⢀⣀⠀⠉⠙⣿⣿⠋⠉⠁⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠻⠿⣿⣿⣿⣿⣿⣿⠿⠿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀""")
+    print(C, end='')
+    print("Machine: {}".rjust(18).format(socket.gethostname()))
+    print("Architecture: {}".rjust(18).format(os.uname()[4]))
+    print("ImageDistro: {} {}".rjust(21).format(
+        getImageDistro(), getImageVersion()))
+    print("ImageBuild: {}".rjust(18).format(date))
+    print("OpenSSL: {}".rjust(18).format(ssl.split()[1]))
+    print("Python: {}".rjust(18).format(version.split()[0]))
+    print("Gcc: {}".rjust(18).format(version.split()[-1].strip(']')))
+    print("FreeRAM: {} KB".rjust(21).format(ram))
+    print("FreeDisk: {} GB".rjust(21).format(disk))
+    print("IPaddress: {}".rjust(18).format(get_ip()))
+
+
+def prompt(choices):
+
+    options = list(choices)
+    while True:
+        print(
+            "{}(?){} Choose an option [{}-{}] : ".format(B, C, options[0], options[-1]), end='')
+        choice = [str(x).upper() for x in input().split()]
+
+        for name in choice:
+            if name not in options:
+                print("\n{}(!){} Select one of the available options !!\n".format(R, C))
+                continue
+        return list(dict.fromkeys(choice))
+
+
+def main():
+    image()
+
+    passwd = shell("passwd -S | awk '{print$2}'")
+
+    system_info()
+    sleep(5)
+
+    if passwd == 'NP':
+        print('{}(!){} Please Enter {}Password{} For {}{}{} : '.format(
+            R, C, Y, C, B, getImageDistro(), C), end='')
+        root = input()
+        os.system("echo 'root:{}' | chpasswd".format(root))
+
+    while check():
+        os.system(update)
+        for name in check():
+            os.system('clear')
+            print("   >>>>   {}Need{} to install {}{}{}   <<<<".format(
+                B, C, Y, name, C))
+            os.system('{} {}'.format(install, name))
+
+    emu = info('plugins')
+    cam = {
+        "A": emu['novalertv'],
+        "B": emu['quran'],
+        "C": emu['ajpanel'],
+        "D": emu['arabic_savior'],
+        "E": emu['youtube'],
+        "F": emu['iptosat'],
+        "G": emu['e2iplayer'],
+        "H": emu['suptv'],
+        "I": emu['multi_stalker'],
+        "J": emu['ipaudio'],
+        "K": emu['keyadder'],
+        "L": emu['fonotonsat'],
+        "M": emu['newvirtualkeyBoard'],
+        "N": emu['epg_grabber'],
+        "O": emu['emu'],
+        "P": emu['neoboot'],
+        "Q": emu['flashonline'],
+        "R": emu['xtraevante'],
+        "S": emu['dreamsatpanel'],
+        "T": emu['jedimakerxtream'],
+        "U": emu['xstreamity'],
+        "V": emu['xc_code'],
+        "W": emu['openmultiboot'],
+        "X": emu['subssupport'],
+        "Y": emu['backupflash'],
+        "Z": emu['raedquicksignal']
+    }
+
+    os.system('clear')
+    print(
+        "\n{}(?){} \033[0;33mChoose the Plugin Install\033[0m :".format(B, C))
+
+    menu = """
+    (A) NovalerTV       (H) Suptv               (O) EMU             (V) XcPlugin Forever
+    (B) Quran           (I) Multi_Stalker       (P) NeoBoot         (W) OpenMultiboot
+    (C) AjPanel         (J) IPAudio             (Q) FlashOnline     (X) SubsSupport
+    (D) ArabicSavior    (K) KeyAdder            (R) XtraEvent       (Y) BackupFlash
+    (E) YouTube         (L) FootOnsat           (S) DreamSatPanel   (Z) RaedQuickSignal
+    (F) IPtoSAT         (M) NewVirtualKeyBoard  (T) JediMakerXtream
+    (G) E2IPLAYER       (N) EPG Grabber         (U) Xstreamity
+    """
+
+    print(menu)
+
+    for name in prompt(cam.keys()):
+        os.system(cam.get(name))
+        sleep(5)
+
+    if image():
+        os.system('killall -9 enigma2')
+    else:
+        os.system('systemctl restart enigma2')
+
+
+if __name__ == '__main__':
+    main()
+    banner()
