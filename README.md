@@ -1,2 +1,1 @@
-# e2script
-Simple scripts for Enigma 2
+## Simple scripts for Enigma 2
