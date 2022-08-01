@@ -19,3 +19,14 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 
 ## 📸 Preview
 
+
+<p align="center">
+
+  ![](https://i.imgur.com/Iqvc8DK.png)
+
+  ![](https://i.imgur.com/lgetWX8.png)
+
+  ![](https://i.imgur.com/Le0ITNb.png)
+</p>
+
+
