@@ -11,7 +11,7 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 
 ### ✔️ NOTE Installation
 
-** You Use `,` To Select Multi Install 💕**
+** You Use Fullwidth Comma `,` To Select Multi Install 💕**
 
 
 ### ✔️ Default Package Install
