@@ -5,7 +5,7 @@
 # SCRIPT : DOWNLOAD AND INSTALL E2script
 # ###########################################
 #
-# Command: wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2script.py -qO - | python
+# Command: python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2script.py -qO -)"
 #
 # ###########################################
 
