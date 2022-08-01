@@ -13,6 +13,37 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 
 ** You Use `,` To Select Multi Install 💕**
 
+
+### ✔️ Default Package Install
+
+* wget
+* curl
+* astra-sm
+* dvbsnoop
+* nano
+* ffmpeg
+* duktape
+* gstplayer
+* exteplayer3
+* enigma2-plugin-systemplugins-serviceapp
+* enigma2-plugin-extensions-epgimport
+* gstreamer1.0-plugins-good
+* gstreamer1.0-plugins-base
+* gstreamer1.0-plugins-bad-meta
+* gstreamer1.0-plugins-ugly
+* libgstplayer-1.0-0
+* enigma2-plugin-drivers-ntfs-3g
+* python-beautifulsoup4
+* python-requests
+* python-sqlite3
+* python-codecs
+* python-core
+* python-json
+* python-netclient
+* python-image
+
+
+
 <p align="center">
   <b>Please consider 🤗 giving this project a star ⭐ if you liked it</b>
 </p>
@@ -20,13 +51,10 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 ## 📸 Preview
 
 
-<p align="center">
+![](https://i.imgur.com/Iqvc8DK.png)
 
-  ![](https://i.imgur.com/Iqvc8DK.png)
+![](https://i.imgur.com/lgetWX8.png)
 
-  ![](https://i.imgur.com/lgetWX8.png)
-
-  ![](https://i.imgur.com/Le0ITNb.png)
-</p>
+![](https://i.imgur.com/Le0ITNb.png)
 
 
