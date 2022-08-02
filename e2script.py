@@ -3,14 +3,14 @@
 
 from __future__ import print_function
 
-import os
-import json
-import socket
 
-from datetime import datetime
-from ssl import OPENSSL_VERSION as ssl
+from socket import socket, gethostname, AF_INET, SOCK_DGRAM
+from os import path, system, popen, uname
 from sys import version, version_info, path
+from ssl import OPENSSL_VERSION as ssl
+from datetime import datetime
 from time import sleep
+from json import loads
 
 
 try:
@@ -48,7 +48,7 @@ def info(item):
         req.add_header(
             'User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0')
         response = urlopen(req)
-        link = json.loads(response.read()).get(item)
+        link = loads(response.read()).get(item)
         if item == 'package':
             if PY == 3:
                 return list(map(lambda x: x.replace('python', 'python3'), link))
@@ -60,7 +60,7 @@ def info(item):
 
 
 def banner():
-    os.system('clear')
+    system('clear')
     print(B)
     print(r"""⠀⠀⡶⠛⠲⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡶⠚⢶⡀⠀
 ⢰⠛⠃⠀⢠⣏⠀⠀⠀⠀⣀⣠⣤⣤⣤⣤⣤⣤⣄⣀⡀⠀⠀⠀⣸⠇⠀⠈⠙⣧
@@ -86,7 +86,7 @@ def banner():
 
 def image():
     global status, update, install
-    if os.path.exists('/etc/opkg/opkg.conf'):
+    if path.exists('/etc/opkg/opkg.conf'):
         status = '/var/lib/opkg/status'
         update = 'opkg update >/dev/null 2>&1'
         install = 'opkg install'
@@ -94,7 +94,7 @@ def image():
         status = '/var/lib/dpkg/status'
         update = 'apt-get update >/dev/null 2>&1'
         install = 'apt-get install'
-    return os.path.exists('/etc/opkg/opkg.conf')
+    return path.exists('/etc/opkg/opkg.conf')
 
 
 def check():
@@ -108,11 +108,11 @@ def check():
     return package_list
 
 
-def shell(cmd): return os.popen(cmd).read().strip()
+def shell(cmd): return popen(cmd).read().strip()
 
 
 def get_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s = socket(AF_INET, SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     return s.getsockname()[0]
 
@@ -127,7 +127,7 @@ def system_info():
     ram = shell("free | grep Mem  | awk '{ print $4 }'")
     disk = shell("df -h | awk 'NR == 2 {print $4}'")
 
-    os.system('clear')
+    system('clear')
     print(Y)
     print(r"""⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⣾⣿⣿⣿⣿⣿⣿⣷⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⣀⣠⣿⣿⣄⣀⡀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀
@@ -146,8 +146,8 @@ def system_info():
 ⠀⠀⠀⠀⠀⠈⠀⠀⠀⢀⣀⠀⠉⠙⣿⣿⠋⠉⠁⠀⠀⠀⠀⠀⠉⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠻⠿⣿⣿⣿⣿⣿⣿⠿⠿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀""")
     print(C, end='')
-    print("Machine: {}".rjust(18).format(socket.gethostname()))
-    print("Architecture: {}".rjust(18).format(os.uname()[4]))
+    print("Machine: {}".rjust(18).format(gethostname()))
+    print("Architecture: {}".rjust(18).format(uname()[4]))
     print("ImageDistro: {} {}".rjust(21).format(
         getImageDistro(), getImageVersion()))
     print("ImageBuild: {}".rjust(18).format(date))
@@ -186,15 +186,15 @@ def main():
         print('{}(!){} Please Enter {}Password{} For {}{}{} : '.format(
             R, C, Y, C, B, getImageDistro(), C), end='')
         root = input()
-        os.system("echo 'root:{}' | chpasswd".format(root))
+        system("echo 'root:{}' | chpasswd".format(root))
 
     while check():
-        os.system(update)
+        system(update)
         for name in check():
-            os.system('clear')
+            system('clear')
             print("   >>>>   {}Need{} to install {}{}{}   <<<<".format(
                 B, C, Y, name, C))
-            os.system('{} {}'.format(install, name))
+            system('{} {}'.format(install, name))
 
     emu = info('plugins')
     cam = {
@@ -226,7 +226,7 @@ def main():
         "Z": emu['raedquicksignal']
     }
 
-    os.system('clear')
+    system('clear')
     print(
         "\n{}(?){} \033[0;33mChoose the Plugin Install\033[0m :".format(B, C))
 
@@ -243,13 +243,13 @@ def main():
     print(menu)
 
     for name in prompt(cam.keys()):
-        os.system(cam.get(name))
+        system(cam.get(name))
         sleep(5)
 
     if image():
-        os.system('killall -9 enigma2')
+        system('killall -9 enigma2')
     else:
-        os.system('systemctl restart enigma2')
+        system('systemctl restart enigma2')
 
 
 if __name__ == '__main__':
