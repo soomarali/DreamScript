@@ -4,9 +4,8 @@
 
 from __future__ import print_function
 
-
 from socket import socket, gethostname, AF_INET, SOCK_DGRAM
-from os import path, system, popen, uname
+from os import system, popen, uname, path
 from sys import version, version_info
 from ssl import OPENSSL_VERSION as ssl
 from datetime import datetime
@@ -91,16 +90,6 @@ def image():
     return path.exists('/etc/opkg/opkg.conf')
 
 
-def box(name):
-    try:
-        with open('/usr/lib/enigma.info')as f:
-            for data in f.readlines():
-                if match(name, data):
-                    return data.split('=')[-1].strip()
-    except:
-        return 'unknown'
-
-
 def check():
     package_list = info('package')
     with open(status) as f:
@@ -121,13 +110,41 @@ def get_ip():
     return s.getsockname()[0]
 
 
+def DataBuild():
+    try:
+        if path.isfile('/usr/lib/enigma.info'):
+            build = open('/usr/lib/enigma.info').readlines()
+            for c in build:
+                if match('compiledate', c):
+                    data = c.split('=')[-1].strip()
+        elif path.isfile('/etc/version'):
+            build = open('/etc/version').read().strip()
+            data = build[:8]
+
+        if data.isdigit():
+            return datetime.strptime(data, '%Y%m%d').strftime('%Y-%m-%d')
+        else:
+            return data
+    except:
+        return 'unknown'
+
+
+def DistroImage():
+    try:
+        if path.isfile('/etc/issue'):
+            image_type = open("/etc/issue").readlines()[-2].strip()[:-6]
+            return image_type.capitalize().replace("develop", "Nightly Build")
+        elif path.isfile('/usr/lib/enigma.info'):
+            distro = open('/usr/lib/enigma.info').readlines()
+            for c in distro:
+                if match('distro', c):
+                    return c.split('=')[-1].strip().capitalize()
+    except:
+        return 'undefined'
+
+
 def system_info():
 
-    if box('compiledate').isalpha():
-        date = box('compiledate')
-    else:
-        date = datetime.strptime(
-            box('compiledate'), '%Y%m%d').strftime('%d-%m-%Y')
     ram = shell("free | grep Mem  | awk '{ print $4 }'")
     disk = shell("df -h | awk 'NR == 2 {print $4}'")
 
@@ -152,9 +169,8 @@ def system_info():
     print(C, end='')
     print("Machine: {}".rjust(18).format(gethostname()))
     print("Architecture: {}".rjust(18).format(uname()[4]))
-    print("ImageDistro: {} {}".rjust(21).format(
-        box('distro'), box('imgversion')))
-    print("ImageBuild: {}".rjust(18).format(date))
+    print("ImageDistro: {}".rjust(18).format(DistroImage()))
+    print("ImageBuild: {}".rjust(18).format(DataBuild()))
     print("OpenSSL: {}".rjust(18).format(ssl.split()[1]))
     print("Python: {}".rjust(18).format(version.split()[0]))
     print("Gcc: {}".rjust(18).format(version.split()[-1].strip(']')))
@@ -188,7 +204,7 @@ def main():
 
     if passwd == 'NP':
         print('{}(!){} Please Enter {}Password{} For {}{}{} : '.format(
-            R, C, Y, C, B, box('distro'), C), end='')
+            R, C, Y, C, B, DistroImage(), C), end='')
         root = input()
         system("echo 'root:{}' | chpasswd".format(root))
 
