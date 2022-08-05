@@ -11,8 +11,23 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 
 ### ✔️ NOTE Installation
 
-** You Use Space Between Alphabet To Select Multi Install 💕**
+** You Use Space Between Numbers To Select Multi Install 💕**
 
+### ✔️ Default Plugin
+
+** If Want To install The Default Plugin Use value : 0 💕**
+
+* AjPanel
+* Quran
+* RaedQuickSignal
+* ArabicSavior
+* YouTube
+* KeyAdder
+* E2IPLAYER
+* FootOnsat
+* IPAudio
+* SubsSupport
+* NewVirtualKeyBoard
 
 ### ✔️ Default Package Install
 
