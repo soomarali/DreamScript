@@ -33,6 +33,7 @@ if hasattr(__builtins__, 'raw_input'):
     input = raw_input
 
 PY = version_info.major
+pkg_list = []
 
 
 def info(item):
@@ -185,13 +186,73 @@ def prompt(choices):
     while True:
         print(
             "{}(?){} Choose an option [{}-{}] : ".format(B, C, options[0], options[-1]), end='')
-        choice = [str(x).upper() for x in input().split()]
+        choice = [str(x) for x in input().split()]
 
         for name in choice:
             if name not in options:
                 print("\n{}(!){} Select one of the available options !!\n".format(R, C))
                 continue
-        return list(dict.fromkeys(choice))
+        return choice
+
+
+def get_prompt():
+    global cam
+    emu = info('plugins')
+    cam = {
+        "0": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+        "1": emu['ajpanel'],
+        "2": emu['quran'],
+        "3": emu['raedquicksignal'],
+        "4": emu['arabic_savior'],
+        "5": emu['youtube'],
+        "6": emu['keyadder'],
+        "7": emu['e2iplayer'],
+        "8": emu['fonotonsat'],
+        "9": emu['ipaudio'],
+        "10": emu['subssupport'],
+        "11": emu['newvirtualkeyBoard'],
+        "12": emu['suptv'],
+        "13": emu['iptosat'],
+        "14": emu['epg_grabber'],
+        "15": emu['emu'],
+        "16": emu['neoboot'],
+        "17": emu['flashonline'],
+        "18": emu['xtraevante'],
+        "19": emu['dreamsatpanel'],
+        "20": emu['jedimakerxtream'],
+        "21": emu['xstreamity'],
+        "22": emu['xc_code'],
+        "23": emu['openmultiboot'],
+        "24": emu['novalertv'],
+        "25": emu['backupflash'],
+        "26": emu['multi_stalker'],
+        "27": emu['hasbahca'],
+        "28": emu['channel']
+    }
+
+    system('clear')
+    print(
+        "\n{}(?){} \033[0;33mChoose the Plugin Install\033[0m :".format(B, C))
+
+    menu = """
+                                    (0) Default
+
+    (1) AjPanel         (8) FootOnsat            (15) EMU             (22) XcPlugin Forever
+    (2) Quran           (9) IPAudio              (16) NeoBoot         (23) OpenMultiboot
+    (3) RaedQuickSignal (10) SubsSupport         (17) FlashOnline     (24) NovalerTV
+    (4) ArabicSavior    (11) NewVirtualKeyBoard  (18) XtraEvent       (25) BackupFlash
+    (5) YouTube         (12) Suptv               (19) DreamSatPanel   (26) Multi_Stalker
+    (6) KeyAdder        (13) IPtoSAT             (20) JediMakerXtream (27) HasBahCa
+    (7) E2IPLAYER       (14) EPG Grabber         (21) Xstreamity      (28) Channel
+    """
+
+    print(menu)
+
+    for name in prompt(cam.keys()):
+        if name == '0':
+            pkg_list.extend(cam.get(name))
+        else:
+            pkg_list.append(name)
 
 
 def main():
@@ -216,53 +277,10 @@ def main():
                 G, C, Y, name, C))
             system('{} {}'.format(install, name))
 
-    emu = info('plugins')
-    cam = {
-        "A": emu['novalertv'],
-        "B": emu['quran'],
-        "C": emu['ajpanel'],
-        "D": emu['arabic_savior'],
-        "E": emu['youtube'],
-        "F": emu['iptosat'],
-        "G": emu['e2iplayer'],
-        "H": emu['suptv'],
-        "I": emu['multi_stalker'],
-        "J": emu['ipaudio'],
-        "K": emu['keyadder'],
-        "L": emu['fonotonsat'],
-        "M": emu['newvirtualkeyBoard'],
-        "N": emu['epg_grabber'],
-        "O": emu['emu'],
-        "P": emu['neoboot'],
-        "Q": emu['flashonline'],
-        "R": emu['xtraevante'],
-        "S": emu['dreamsatpanel'],
-        "T": emu['jedimakerxtream'],
-        "U": emu['xstreamity'],
-        "V": emu['xc_code'],
-        "W": emu['openmultiboot'],
-        "X": emu['subssupport'],
-        "Y": emu['backupflash'],
-        "Z": emu['raedquicksignal']
-    }
-
-    system('clear')
-    print(
-        "\n{}(?){} \033[0;33mChoose the Plugin Install\033[0m :".format(B, C))
-
-    menu = """
-    (A) NovalerTV       (H) Suptv               (O) EMU             (V) XcPlugin Forever
-    (B) Quran           (I) Multi_Stalker       (P) NeoBoot         (W) OpenMultiboot
-    (C) AjPanel         (J) IPAudio             (Q) FlashOnline     (X) SubsSupport
-    (D) ArabicSavior    (K) KeyAdder            (R) XtraEvent       (Y) BackupFlash
-    (E) YouTube         (L) FootOnsat           (S) DreamSatPanel   (Z) RaedQuickSignal
-    (F) IPtoSAT         (M) NewVirtualKeyBoard  (T) JediMakerXtream
-    (G) E2IPLAYER       (N) EPG Grabber         (U) Xstreamity
-    """
-
-    print(menu)
-
-    for name in prompt(cam.keys()):
+    get_prompt()
+    numbers = list(dict.fromkeys(pkg_list))
+    numbers.sort(key=int)
+    for name in numbers:
         system(cam.get(name))
         sleep(5)
 
