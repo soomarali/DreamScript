@@ -43,7 +43,7 @@
         "fonotonsat": "wget https://raw.githubusercontent.com/ziko-ZR1/FootOnsat/main/Download/install.sh -qO - | /bin/sh",
         "newvirtualkeyBoard": "wget https://raw.githubusercontent.com/fairbird/NewVirtualKeyBoard/main/installer.sh -qO - | /bin/sh",
         "epg_grabber": "wget https://raw.githubusercontent.com/ziko-ZR1/Epg-plugin/master/Download/installer.sh -qO - | /bin/sh",
-        "emu": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Emu/installer.py; python installer.py",
+        "emu": "wget -q https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Emu/installer.py; python installer.py && rm -rf $(pwd)/installer.py*",
         "neoboot": "wget https://raw.githubusercontent.com/gutosie/neoboot/master/iNB.sh -qO - | /bin/sh",
         "flashonline": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/FlashOnline/installer.py -qO - | python",
         "xtraevante": "wget https://github.com/digiteng/xtra/raw/main/xtraEvent.sh -qO - | /bin/sh",
@@ -53,6 +53,8 @@
         "xc_code": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/XC-Code/installer.sh -qO - | /bin/sh",
         "openmultiboot": "wget https://raw.githubusercontent.com/biko-73/openmultiboot/main/installer.sh -qO - | /bin/sh",
         "subssupport": "wget https://raw.githubusercontent.com/biko-73/SubsSupport/main/installer.sh -qO - | /bin/sh",
-        "backupflash": "wget https://raw.githubusercontent.com/fairbird/backupflash/main/installer.sh -qO - | /bin/sh"
+        "backupflash": "wget https://raw.githubusercontent.com/fairbird/backupflash/main/installer.sh -qO - | /bin/sh",
+        "hasbahca": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/HasBahCa/installer.sh -qO - | /bin/sh",
+        "channel": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Channel/installer.py -qO - | python"
     }
 }
