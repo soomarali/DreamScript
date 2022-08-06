@@ -55,6 +55,9 @@
         "subssupport": "wget https://raw.githubusercontent.com/biko-73/SubsSupport/main/installer.sh -qO - | /bin/sh",
         "backupflash": "wget https://raw.githubusercontent.com/fairbird/backupflash/main/installer.sh -qO - | /bin/sh",
         "hasbahca": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/HasBahCa/installer.sh -qO - | /bin/sh",
-        "channel": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Channel/installer.py -qO - | python"
+        "channel": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Channel/installer.py -qO - | python",
+        "nordvpn": "wget http://nordvpnconnector.dd-dns.de/nvpnc-installer_ipk.sh -qO - | /bin/sh",
+        "chocholousekpicons": "wget https://github.com/s3n0/e2plugins/raw/master/ChocholousekPicons/online-setup -qO - | bash -s install",
+        "openwebif": "wget http://tunisia-dreambox.info/TSplugins/openWebif/installer.sh -qO - | /bin/sh"
     }
 }

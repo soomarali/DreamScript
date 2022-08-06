@@ -227,7 +227,10 @@ def get_prompt():
         "25": emu['backupflash'],
         "26": emu['multi_stalker'],
         "27": emu['hasbahca'],
-        "28": emu['channel']
+        "28": emu['nordvpn'],
+        "29": emu['chocholousekpicons'],
+        "30": emu['openwebif'],
+        "31": emu['channel'],
     }
 
     system('clear')
@@ -237,13 +240,15 @@ def get_prompt():
     menu = """
                                     (0) Default
 
-    (1) AjPanel         (8) FootOnsat            (15) EMU             (22) XcPlugin Forever
-    (2) Quran           (9) IPAudio              (16) NeoBoot         (23) OpenMultiboot
-    (3) RaedQuickSignal (10) SubsSupport         (17) FlashOnline     (24) NovalerTV
-    (4) ArabicSavior    (11) NewVirtualKeyBoard  (18) XtraEvent       (25) BackupFlash
-    (5) YouTube         (12) Suptv               (19) DreamSatPanel   (26) Multi_Stalker
-    (6) KeyAdder        (13) IPtoSAT             (20) JediMakerXtream (27) HasBahCa
-    (7) E2IPLAYER       (14) EPG Grabber         (21) Xstreamity      (28) Channel
+    (1) AjPanel         (10) SubsSupport         (19) DreamSatPanel      (28) NordVPN
+    (2) Quran           (11) NewVirtualKeyBoard  (20) JediMakerXtream    (29) ChocholousekPicons
+    (3) RaedQuickSignal (12) Suptv               (21) Xstreamity         (30) OpenWebif
+    (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) Channel
+    (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot
+    (6) KeyAdder        (15) EMU                 (24) NovalerTV
+    (7) E2IPLAYER       (16) NeoBoot             (25) BackupFlash
+    (8) FootOnsat       (17) FlashOnline         (26) Multi_Stalker
+    (9) IPAudio         (18) XtraEvent           (27) HasBahCa
     """
 
     print(menu)
