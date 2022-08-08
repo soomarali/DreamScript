@@ -184,7 +184,7 @@ def system_info():
     print("OpenSSL: {}".rjust(18).format(ssl.split()[1]))
     print("Python: {}".rjust(18).format(version.split()[0]))
     print("Gcc: {}".rjust(18).format(version.split()[-1].strip(']')))
-    print("FreeRAM: {} %".rjust(21).format(FreeMemory()))
+    print("FreeRAM: {} %".rjust(20).format(FreeMemory()))
     print("FreeDisk: {} GB".rjust(21).format(disk))
     print("IPaddress: {}".rjust(18).format(get_ip()))
 
