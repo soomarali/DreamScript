@@ -144,9 +144,18 @@ def DistroImage():
         return 'undefined'
 
 
+def FreeMemory():
+    with open('/proc/meminfo') as file:
+        for line in file:
+            if 'MemFree' in line:
+                free_memKB = int(line.split()[1])
+            if 'MemTotal' in line:
+                total_memKB = int(line.split()[1])
+        return (100 * free_memKB / total_memKB)
+
+
 def system_info():
 
-    ram = shell("free | grep Mem  | awk '{ print $4 }'")
     disk = shell("df -h | awk 'NR == 2 {print $4}'")
 
     system('clear')
@@ -175,7 +184,7 @@ def system_info():
     print("OpenSSL: {}".rjust(18).format(ssl.split()[1]))
     print("Python: {}".rjust(18).format(version.split()[0]))
     print("Gcc: {}".rjust(18).format(version.split()[-1].strip(']')))
-    print("FreeRAM: {} KB".rjust(21).format(ram))
+    print("FreeRAM: {} %".rjust(21).format(FreeMemory()))
     print("FreeDisk: {} GB".rjust(21).format(disk))
     print("IPaddress: {}".rjust(18).format(get_ip()))
 
