@@ -35,7 +35,6 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 * curl
 * astra-sm
 * dvbsnoop
-* nano
 * ffmpeg
 * duktape
 * gstplayer
@@ -44,7 +43,6 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 * enigma2-plugin-extensions-epgimport
 * gstreamer1.0-plugins-good
 * gstreamer1.0-plugins-base
-* gstreamer1.0-plugins-bad-meta
 * gstreamer1.0-plugins-ugly
 * libgstplayer-1.0-0
 * enigma2-plugin-drivers-ntfs-3g
