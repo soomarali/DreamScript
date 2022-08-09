@@ -151,7 +151,7 @@ def FreeMemory():
                 free_memKB = int(line.split()[1])
             if 'MemTotal' in line:
                 total_memKB = int(line.split()[1])
-        return (100 * free_memKB / total_memKB)
+        return int((100 * free_memKB / total_memKB))
 
 
 def system_info():
