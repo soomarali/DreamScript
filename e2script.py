@@ -157,6 +157,7 @@ def FreeMemory():
 def system_info():
 
     disk = shell("df -h | awk 'NR == 2 {print $4}'")
+    mac = shell("cat /sys/class/net/eth*/address").upper()
 
     system('clear')
     print(Y)
@@ -187,6 +188,7 @@ def system_info():
     print("FreeRAM: {} %".rjust(20).format(FreeMemory()))
     print("FreeDisk: {} GB".rjust(21).format(disk))
     print("IPaddress: {}".rjust(18).format(get_ip()))
+    print("MacAddress: {}".rjust(18).format(mac))
 
 
 def prompt(choices):
