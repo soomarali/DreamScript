@@ -193,6 +193,7 @@ def system_info():
 def prompt(choices):
 
     options = list(choices)
+    options.sort(key=int)
     while True:
         print(
             "{}(?){} Choose an option [{}-{}] : ".format(B, C, options[0], options[-1]), end='')
