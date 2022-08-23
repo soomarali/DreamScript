@@ -13,10 +13,10 @@ from time import sleep
 from json import loads
 from re import match
 
-try:
+if version_info.major == 3:
     from urllib.request import Request, urlopen
     from urllib.error import URLError, HTTPError
-except ImportError:
+else:
     from urllib2 import Request, urlopen, URLError, HTTPError
 
 
@@ -32,7 +32,6 @@ URL = 'https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/'
 if hasattr(__builtins__, 'raw_input'):
     input = raw_input
 
-PY = version_info.major
 pkg_list = []
 
 
@@ -44,7 +43,7 @@ def info(item):
         response = urlopen(req)
         link = loads(response.read()).get(item)
         if item == 'package':
-            if PY == 3:
+            if version_info.major == 3:
                 return list(map(lambda x: x.replace('python', 'python3'), link))
         return link
     except HTTPError as e:
