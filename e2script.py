@@ -240,7 +240,8 @@ def get_prompt():
         "28": emu['nordvpn'],
         "29": emu['chocholousekpicons'],
         "30": emu['openwebif'],
-        "31": emu['channel'],
+        "31": emu['novacam'],
+        "32": emu['channel'],
     }
 
     system('clear')
@@ -253,8 +254,8 @@ def get_prompt():
     (1) AjPanel         (10) SubsSupport         (19) DreamSatPanel      (28) NordVPN
     (2) Quran           (11) NewVirtualKeyBoard  (20) JediMakerXtream    (29) ChocholousekPicons
     (3) RaedQuickSignal (12) Suptv               (21) Xstreamity         (30) OpenWebif
-    (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) Channel
-    (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot
+    (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) NovaCam
+    (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) Channel
     (6) KeyAdder        (15) EMU                 (24) NovalerTV
     (7) E2IPLAYER       (16) NeoBoot             (25) BackupFlash
     (8) FootOnsat       (17) FlashOnline         (26) Multi_Stalker

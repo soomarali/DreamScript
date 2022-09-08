@@ -1,5 +1,5 @@
 {
-    "version": "2.3",
+    "version": "2.4",
     "package": [
         "wget",
         "curl",
@@ -55,6 +55,7 @@
         "channel": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Channel/installer.py -qO - | python",
         "nordvpn": "wget http://nordvpnconnector.dd-dns.de/nvpnc-installer_ipk.sh -qO - | /bin/sh",
         "chocholousekpicons": "wget https://github.com/s3n0/e2plugins/raw/master/ChocholousekPicons/online-setup -qO - | bash -s install",
-        "openwebif": "wget http://tunisia-dreambox.info/TSplugins/openWebif/installer.sh -qO - | /bin/sh"
+        "openwebif": "wget http://tunisia-dreambox.info/TSplugins/openWebif/installer.sh -qO - | /bin/sh",
+        "novacam": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/NovCam/installer.py -qO - | python"
     }
 }
