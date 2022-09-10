@@ -241,7 +241,8 @@ def get_prompt():
         "29": emu['chocholousekpicons'],
         "30": emu['openwebif'],
         "31": emu['novacam'],
-        "32": emu['channel'],
+        "32": emu['freeserver'],
+        "33": emu['channel'],
     }
 
     system('clear')
@@ -255,8 +256,8 @@ def get_prompt():
     (2) Quran           (11) NewVirtualKeyBoard  (20) JediMakerXtream    (29) ChocholousekPicons
     (3) RaedQuickSignal (12) Suptv               (21) Xstreamity         (30) OpenWebif
     (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) NovaCam
-    (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) Channel
-    (6) KeyAdder        (15) EMU                 (24) NovalerTV
+    (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) FreeServerCCcam
+    (6) KeyAdder        (15) EMU                 (24) NovalerTV          (33) Channel
     (7) E2IPLAYER       (16) NeoBoot             (25) BackupFlash
     (8) FootOnsat       (17) FlashOnline         (26) Multi_Stalker
     (9) IPAudio         (18) XtraEvent           (27) HasBahCa
