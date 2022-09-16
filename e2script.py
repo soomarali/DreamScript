@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 # code: BY MOHAMED_OS
 
 from __future__ import print_function
