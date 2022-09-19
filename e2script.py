@@ -3,6 +3,7 @@
 
 # code: BY MOHAMED_OS
 
+from __future__ import unicode_literals
 from __future__ import print_function
 
 from socket import socket, gethostname, AF_INET, SOCK_DGRAM
