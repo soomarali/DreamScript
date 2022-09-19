@@ -195,7 +195,7 @@ def foot_fix():
     if path.isfile(Foot_Path):
         search_text = "if reason == 0 and isHD"
         replace_text = "if reason == 0 and not isHD"
-        with open(Foot_Path, 'r+', encoding='utf-8') as f:
+        with open(Foot_Path, 'r+') as f:
             file = f.read()
             file = sub(search_text, replace_text, file)
             f.seek(0)
