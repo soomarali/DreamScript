@@ -3,7 +3,7 @@
 from __future__ import print_function
 
 from socket import socket, gethostname, AF_INET, SOCK_DGRAM
-from os import system, popen, uname, path
+from os import system, popen, uname, path as os_path
 from sys import version, version_info
 from ssl import OPENSSL_VERSION as ssl
 from datetime import datetime
@@ -77,7 +77,7 @@ def banner():
 
 def image():
     global status, update, install
-    if path.exists('/etc/opkg/opkg.conf'):
+    if os_path.exists('/etc/opkg/opkg.conf'):
         status = '/var/lib/opkg/status'
         update = 'opkg update >/dev/null 2>&1'
         install = 'opkg install'
@@ -85,7 +85,7 @@ def image():
         status = '/var/lib/dpkg/status'
         update = 'apt-get update >/dev/null 2>&1'
         install = 'apt-get install'
-    return path.exists('/etc/opkg/opkg.conf')
+    return os_path.exists('/etc/opkg/opkg.conf')
 
 
 def check():
@@ -110,12 +110,12 @@ def get_ip():
 
 def DataBuild():
     try:
-        if path.isfile('/usr/lib/enigma.info'):
+        if os_path.isfile('/usr/lib/enigma.info'):
             build = open('/usr/lib/enigma.info').readlines()
             for c in build:
                 if match('compiledate', c):
                     data = c.split('=')[-1].strip()
-        elif path.isfile('/etc/version'):
+        elif os_path.isfile('/etc/version'):
             build = open('/etc/version').read().strip()
             data = build[:8]
 
@@ -129,10 +129,10 @@ def DataBuild():
 
 def DistroImage():
     try:
-        if path.isfile('/etc/issue'):
+        if os_path.isfile('/etc/issue'):
             image_type = open("/etc/issue").readlines()[-2].strip()[:-6]
             return image_type.capitalize().replace("develop", "Nightly Build")
-        elif path.isfile('/usr/lib/enigma.info'):
+        elif os_path.isfile('/usr/lib/enigma.info'):
             distro = open('/usr/lib/enigma.info').readlines()
             for c in distro:
                 if match('distro', c):
@@ -192,7 +192,7 @@ def foot_fix():
 
     Foot_Path = '/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/plugin.py'
 
-    if path.isfile(Foot_Path):
+    if os_path.isfile(Foot_Path):
         search_text = "if reason == 0 and isHD"
         replace_text = "if reason == 0 and not isHD"
         with open(Foot_Path, 'r+') as f:
