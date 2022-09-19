@@ -3,7 +3,6 @@
 
 # code: BY MOHAMED_OS
 
-from __future__ import unicode_literals
 from __future__ import print_function
 
 from socket import socket, gethostname, AF_INET, SOCK_DGRAM
@@ -42,7 +41,7 @@ def info(item):
         req = Request('{}packages.json'.format(URL))
         req.add_header(
             'User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0')
-        response = urlopen(req)
+        response = urlopen(req).decode('utf-8')
         link = loads(response.read()).get(item)
         if item == 'package':
             if version_info.major == 3:
@@ -94,7 +93,7 @@ def image():
 
 def check():
     package_list = info('package')
-    with open(status) as f:
+    with open(status, encoding='utf-8') as f:
         for c in f.readlines():
             if c.startswith('Package:'):
                 pkg = c[c.index(' '):].strip()
@@ -115,7 +114,7 @@ def get_ip():
 def DataBuild():
     try:
         if path.isfile('/usr/lib/enigma.info'):
-            build = open('/usr/lib/enigma.info').readlines()
+            build = open('/usr/lib/enigma.info', encoding='utf-8').readlines()
             for c in build:
                 if match('compiledate', c):
                     data = c.split('=')[-1].strip()
@@ -134,10 +133,11 @@ def DataBuild():
 def DistroImage():
     try:
         if path.isfile('/etc/issue'):
-            image_type = open("/etc/issue").readlines()[-2].strip()[:-6]
+            image_type = open(
+                "/etc/issue", encoding='utf-8').readlines()[-2].strip()[:-6]
             return image_type.capitalize().replace("develop", "Nightly Build")
         elif path.isfile('/usr/lib/enigma.info'):
-            distro = open('/usr/lib/enigma.info').readlines()
+            distro = open('/usr/lib/enigma.info', encoding='utf-8').readlines()
             for c in distro:
                 if match('distro', c):
                     return c.split('=')[-1].strip().capitalize()
