@@ -2,20 +2,21 @@
 
 from __future__ import print_function
 
-from socket import socket, gethostname, AF_INET, SOCK_DGRAM
-from os import system, popen, uname, path as os_path
-from sys import version, version_info
-from ssl import OPENSSL_VERSION as ssl
 from datetime import datetime
-from time import sleep
 from json import loads
+from os import path as os_path
+from os import popen, system, uname
 from re import match, sub
+from socket import AF_INET, SOCK_DGRAM, gethostname, socket
+from ssl import OPENSSL_VERSION as ssl
+from sys import version, version_info
+from time import sleep
 
 if version_info.major == 3:
+    from urllib.error import HTTPError, URLError
     from urllib.request import Request, urlopen
-    from urllib.error import URLError, HTTPError
 else:
-    from urllib2 import Request, urlopen, URLError, HTTPError
+    from urllib2 import HTTPError, Request, URLError, urlopen
 
 
 # colors
@@ -257,7 +258,8 @@ def get_prompt():
         "30": emu['openwebif'],
         "31": emu['novacam'],
         "32": emu['freeserver'],
-        "33": emu['channel'],
+        "33": emu['athantimes'],
+        "34": emu['channel'],
     }
 
     system('clear')
@@ -272,8 +274,8 @@ def get_prompt():
     (3) RaedQuickSignal (12) Suptv               (21) Xstreamity         (30) OpenWebif
     (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) NovaCam
     (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) FreeServerCCcam
-    (6) KeyAdder        (15) EMU                 (24) NovalerTV          (33) Channel
-    (7) E2IPLAYER       (16) NeoBoot             (25) BackupFlash
+    (6) KeyAdder        (15) EMU                 (24) NovalerTV          (33) AthanTimes
+    (7) E2IPLAYER       (16) NeoBoot             (25) BackupFlash        (34) Channel
     (8) FootOnsat       (17) FlashOnline         (26) Multi_Stalker
     (9) IPAudio         (18) XtraEvent           (27) HasBahCa
     """
