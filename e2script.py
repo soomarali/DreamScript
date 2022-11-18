@@ -6,7 +6,7 @@ from datetime import datetime
 from json import loads
 from os import path as os_path
 from os import popen, system, uname
-from re import match, sub
+from re import match
 from socket import AF_INET, SOCK_DGRAM, gethostname, socket
 from ssl import OPENSSL_VERSION as ssl
 from sys import version, version_info
@@ -189,22 +189,6 @@ def system_info():
     print("MacAddress: {}".rjust(18).format(mac))
 
 
-def foot_fix():
-
-    Foot_Path = '/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/plugin.py'
-
-    if os_path.isfile(Foot_Path):
-        search_text = "if reason == 0 and isHD"
-        replace_text = "if reason == 0 and not isHD"
-        with open(Foot_Path, 'r+') as f:
-            file = f.read()
-            file = sub(search_text, replace_text, file)
-            f.seek(0)
-            f.write(file)
-            f.truncate()
-            f.close()
-
-
 def prompt(choices):
 
     options = list(choices)
@@ -318,8 +302,6 @@ def main():
         system(cam.get(name))
         sleep(5)
 
-    foot_fix()
-
     if image():
         system('killall -9 enigma2')
     else:
@@ -327,6 +309,5 @@ def main():
 
 
 if __name__ == '__main__':
-    foot_fix()
     main()
     banner()
