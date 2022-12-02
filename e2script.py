@@ -17,7 +17,9 @@ if version_info.major == 3:
     from urllib.error import HTTPError, URLError
     from urllib.request import Request, urlopen, urlretrieve
 else:
-    from urllib2 import HTTPError, Request, URLError, urlopen, urlretrieve
+    from urllib import urlretrieve
+
+    from urllib2 import HTTPError, Request, URLError, urlopen
 
 # colors
 C = "\033[0m"     # clear (end)
@@ -205,8 +207,8 @@ class Script():
                     "33": self.get_info('novalertv'),
                     "34": self.get_info('novaipaudio'),
                     "35": self.get_info('pluto'),
-                    "40": self.channel('ciefp_Motor_68°E-30°W.tar.gz'),
-                    "41": self.channel('Vhannibal_Motor_70°E-45°W.tar.gz'),
+                    "40": "ciefp_Motor_68°E-30°W.tar.gz",
+                    "41": "Vhannibal_Motor_70°E-45°W.tar.gz",
                     "42": self.get_info('channel_os')}
 
         self.Main_Menu()
@@ -252,8 +254,11 @@ class Script():
         numbers = list(dict.fromkeys(self.list_pkg))
         numbers.sort(key=int)
         for name in numbers:
-            system(self.cam.get(name))
-            sleep(5)
+            if name == '40' or name == '41':
+                self.channel(self.cam.get(name))
+            else:
+                system(self.cam.get(name))
+                sleep(5)
 
         if self.Stb_Image():
             system('killall -9 enigma2')
