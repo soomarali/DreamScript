@@ -94,7 +94,7 @@ class Script():
 
     def get_info(self, item):
         try:
-            req = Request("".join([self.URL, 'packages.json']))
+            req = Request("".join([self.URL, 'e2script.json']))
             req.add_header(
                 'User-Agent', 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0')
             response = urlopen(req)
