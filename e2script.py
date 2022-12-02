@@ -205,8 +205,8 @@ class Script():
                     "33": self.get_info('novalertv'),
                     "34": self.get_info('novaipaudio'),
                     "35": self.get_info('pluto'),
-                    "40": self.channel('ciefp Motor  68°E-30°W.tar.gz'),
-                    "41": self.channel('Vhannibal Motor 70°E-45°W.tar.gz'),
+                    "40": self.channel('ciefp_Motor_68°E-30°W.tar.gz'),
+                    "41": self.channel('Vhannibal_Motor_70°E-45°W.tar.gz'),
                     "42": self.get_info('channel_os')}
 
         self.Main_Menu()
