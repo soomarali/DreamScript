@@ -243,12 +243,12 @@ def get_prompt():
         "31": emu['novacam'],
         "32": emu['freeserver'],
         "33": emu['athantimes'],
+        "34": emu['novaipaudio'],
         "34": emu['channel'],
     }
 
     system('clear')
-    print(
-        "\n{}(?){} \033[0;33mChoose the Plugin Install\033[0m :".format(B, C))
+    print("\n{}(?){} \033[0;33mChoose the Plugin Install\033[0m :".format(B, C))
 
     menu = """
                                     (0) Default
@@ -259,8 +259,8 @@ def get_prompt():
     (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) NovaCam
     (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) FreeServerCCcam
     (6) KeyAdder        (15) EMU                 (24) NovalerTV          (33) AthanTimes
-    (7) E2IPLAYER       (16) NeoBoot             (25) BackupFlash        (34) Channel
-    (8) FootOnsat       (17) FlashOnline         (26) Multi_Stalker
+    (7) E2IPLAYER       (16) NeoBoot             (25) BackupFlash        (34) IPAudio Novaler
+    (8) FootOnsat       (17) FlashOnline         (26) Multi_Stalker      (35) Channel
     (9) IPAudio         (18) XtraEvent           (27) HasBahCa
     """
 
@@ -282,8 +282,7 @@ def main():
     sleep(5)
 
     if passwd == 'NP':
-        print('{}(!){} Please Enter {}Password{} For {}{}{} : '.format(
-            R, C, Y, C, B, DistroImage(), C), end='')
+        print('{}(!){} Please Enter {}Password{} For {}{}{} : '.format(R, C, Y, C, B, DistroImage(), C), end='')
         root = input()
         system("echo 'root:{}' | chpasswd".format(root))
 
