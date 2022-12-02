@@ -144,6 +144,8 @@ class Script():
         if isfile(fname):
             remove(fname)
 
+        print(''.join(['Channel ', fname.split('_')[0], ' Installed']))
+
     def Main_Menu(self):
 
         print("\n{}(?){} Choose the Plugin Install:".format(B, C))
@@ -207,8 +209,8 @@ class Script():
                     "33": self.get_info('novalertv'),
                     "34": self.get_info('novaipaudio'),
                     "35": self.get_info('pluto'),
-                    "40": "ciefp_Motor_68°E-30°W.tar.gz",
-                    "41": "Vhannibal_Motor_70°E-45°W.tar.gz",
+                    "40": "ciefp_Motor_68E-30W.tar.gz",
+                    "41": "Vhannibal_Motor_70E-45W.tar.gz",
                     "42": self.get_info('channel_os')}
 
         self.Main_Menu()
