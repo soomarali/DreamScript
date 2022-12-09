@@ -265,6 +265,7 @@ class Script():
 
         if isdir("/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat"):
             urlretrieve("".join([self.URL, 'launcher.py']), filename='launcher.py')
+            remove('/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui/launcher.py')
             move('launcher.py','/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
 
         if self.Stb_Image():
