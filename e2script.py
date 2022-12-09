@@ -8,6 +8,7 @@ from json import loads
 from os import chdir, popen, remove, system
 from os.path import isfile, join
 from re import MULTILINE, findall, match
+from shutil import move
 from socket import gethostname
 from sys import version_info
 from tarfile import TarFile
@@ -261,6 +262,10 @@ class Script():
             else:
                 system(self.cam.get(name))
                 sleep(5)
+
+        if isfile("/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat"):
+            urlretrieve("".join([self.URL, 'launcher.py']), filename='launcher.py')
+            move('launcher.py','/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
 
         if self.Stb_Image():
             system('killall -9 enigma2')
