@@ -6,7 +6,7 @@ from __future__ import print_function
 
 from json import loads
 from os import chdir, popen, remove, system
-from os.path import isfile, join
+from os.path import isdir, isfile, join
 from re import MULTILINE, findall, match
 from shutil import move
 from socket import gethostname
@@ -263,7 +263,7 @@ class Script():
                 system(self.cam.get(name))
                 sleep(5)
 
-        if isfile("/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat"):
+        if isdir("/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat"):
             urlretrieve("".join([self.URL, 'launcher.py']), filename='launcher.py')
             move('launcher.py','/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
 
