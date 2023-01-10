@@ -220,6 +220,7 @@ class Script():
             if name == '00':
                 print("GoodBye ...!\n", "   Written by {}MOHAMED_OS{}(͡๏̯͡๏) \n".format(
                     B, C, R, C))
+                exit()
             elif name == '0':
                 self.list_pkg.extend(self.cam.get(name))
 
