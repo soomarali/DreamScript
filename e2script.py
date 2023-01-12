@@ -14,7 +14,7 @@ from sys import version_info
 from tarfile import TarFile
 from time import sleep
 
-if version_info.major == 3:
+if version_info[0] == 3:
     from urllib.error import HTTPError, URLError
     from urllib.request import Request, urlopen, urlretrieve
 else:
@@ -43,7 +43,7 @@ class Script():
         self.hostname = gethostname()
         self.package = ['wget', 'curl', 'astra-sm', 'dvbsnoop', 'ffmpeg', 'duktape', 'gstplayer', 'exteplayer3', 'enigma2-plugin-systemplugins-serviceapp', 'enigma2-plugin-extensions-epgimport', 'gstreamer1.0-plugins-good',
                         'gstreamer1.0-plugins-base', 'gstreamer1.0-plugins-ugly', 'libgstplayer-1.0-0', 'python-requests', 'python-sqlite3', 'python-codecs', 'python-core', 'python-json', 'python-netclient', 'python-image']
-        if version_info.major == 3:
+        if version_info[0] == 3:
             self.package = list(
                 map(lambda x: x.replace('python', 'python3'), self.package))
 
@@ -264,10 +264,10 @@ class Script():
                 system(self.cam.get(name))
                 sleep(5)
 
-        if isdir("/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat"):
-            urlretrieve("".join([self.URL, 'launcher.py']), filename='launcher.py')
-            remove('/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui/launcher.py')
-            move('launcher.py','/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
+            if name == '8':
+                urlretrieve("".join([self.URL, 'launcher.py']), filename='launcher.py')
+                remove('/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui/launcher.py')
+                move('launcher.py','/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
 
         if self.Stb_Image():
             system('killall -9 enigma2')
