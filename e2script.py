@@ -224,7 +224,7 @@ class Script():
             elif name == '0':
                 self.list_pkg.extend(self.cam.get(name))
 
-                if self.hostname == 'novaler4k' or self.hostname == 'novaler4kse':
+                if self.hostname in ['novaler4k', 'novaler4kse', 'multibox', 'multiboxse']:
                     self.list_pkg = list(
                         map(lambda x: x.replace('9', '34'), self.list_pkg))
             else:
