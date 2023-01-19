@@ -124,8 +124,8 @@ class Script():
             return choice
 
     def channel(self, fname):
-        for file in ['lamedb', '*list', '*.tv', '*.radio', '*.xml']:
-            if file != '*.xml':
+        for file in ['lamedb', '*list', '*.tv', '*.radio', 'satellites.xml']:
+            if file != 'satellites.xml':
                 self.path_dir = '/etc/enigma2/'
             else:
                 self.path_dir = '/etc/tuxbox/'
@@ -160,8 +160,8 @@ class Script():
         (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) FreeServerCCcam
         (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) NovaCam
         (6) KeyAdder        (15) EMU Install         (24) AthanTimes         (33) NovalerTV
-        (7) E2IPLAYER       (16) NeoBoot Officel     (25) BackupFlash        (34) IPAudio Only Novaler
-        (8) FootOnsat       (17) FlashOnline         (26) Multi Stalker      (35) PlutoTV
+        (7) E2IPLAYER       (16) PlutoTV             (25) BackupFlash        (34) IPAudio Only Novaler
+        (8) FootOnsat       (17) FlashOnline         (26) Multi Stalker
         (9) IPAudio         (18) XtraEvent           (27) HasBahCa
         """
 
@@ -190,7 +190,7 @@ class Script():
                     "13": self.get_info('iptosat'),
                     "14": self.get_info('epg_grabber'),
                     "15": self.get_info('emu'),
-                    "16": self.get_info('neoboot'),
+                    "16": self.get_info('pluto'),
                     "17": self.get_info('flashonline'),
                     "18": self.get_info('xtraevante'),
                     "19": self.get_info('dreamsatpanel'),
@@ -209,7 +209,6 @@ class Script():
                     "32": self.get_info('novacam'),
                     "33": self.get_info('novalertv'),
                     "34": self.get_info('novaipaudio'),
-                    "35": self.get_info('pluto'),
                     "40": "ciefp_Motor_68E-30W.tar.gz",
                     "41": "Vhannibal_Motor_70E-45W.tar.gz",
                     "42": self.get_info('channel_os')}
