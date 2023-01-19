@@ -157,6 +157,7 @@ class Script():
         if isfile(fname):
             remove(fname)
 
+        urlretrieve('http://127.0.0.1/web/servicelistreload?mode=0')
         print(''.join(['Channel ', fname.split('.')[0], ' Installed']))
 
     def Main_Menu(self):
