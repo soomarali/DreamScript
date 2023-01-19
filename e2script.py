@@ -157,7 +157,7 @@ class Script():
         if isfile(fname):
             remove(fname)
 
-        print(''.join(['Channel ', fname.split('_')[0], ' Installed']))
+        print(''.join(['Channel ', fname.split('.')[0], ' Installed']))
 
     def Main_Menu(self):
 
