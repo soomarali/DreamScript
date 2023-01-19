@@ -124,6 +124,8 @@ class Script():
             return choice
 
     def delete(self):
+        print('{}(?){} Now It Will be deleted Old Settings And Add The New'.format(B, C))
+
         for file in ['lamedb', '*list', '*.tv', '*.radio', 'satellites.xml']:
             if file != 'satellites.xml':
                 self.path_dir = '/etc/enigma2/'
@@ -131,6 +133,8 @@ class Script():
                 self.path_dir = '/etc/tuxbox/'
             if isfile(join(self.path_dir, file)):
                 remove(join(self.path_dir, file))
+
+        sleep(0.8)
         urlretrieve('http://127.0.0.1/web/servicelistreload?mode=0')
 
     def channel(self, fname):
@@ -149,11 +153,14 @@ class Script():
         elif fname == 'predrag-settings-e2-motor-42e-30w.tar.gz':
             link_settings = "".join([url_settings, "Predr@g/"])
 
+        print("{}Downloading{} And Installing Channel {}Please Wait{} {}......{}".format(
+            Y, C, R, C, G, C))
+
         urlretrieve("".join([link_settings, fname]), filename=fname)
 
-        sleep(1)
+        sleep(0.8)
         self.delete()
-        sleep(1)
+        sleep(0.8)
 
         with TarFile.open(fname) as tar_ref:
             for member in tar_ref.getmembers():
@@ -164,8 +171,10 @@ class Script():
             remove(fname)
 
         sleep(0.8)
+        print('{}(?){} Reload UserBouquets and LameDB'.format(B, C))
         urlretrieve('http://127.0.0.1/web/servicelistreload?mode=0')
         sleep(0.8)
+
         print(''.join(['Channel ', fname.split('.')[0], ' Installed']))
 
     def Main_Menu(self):
@@ -295,6 +304,7 @@ class Script():
                 move('launcher.py',
                      '/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
 
+        print('{}(?){} Device will restart now'.format(B, C))
         if self.Stb_Image():
             system('killall -9 enigma2')
         else:
