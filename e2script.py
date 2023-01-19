@@ -124,6 +124,8 @@ class Script():
             return choice
 
     def channel(self, fname):
+        url_settings = 'http://178.63.156.75/paneladdons/'
+
         for file in ['lamedb', '*list', '*.tv', '*.radio', 'satellites.xml']:
             if file != 'satellites.xml':
                 self.path_dir = '/etc/enigma2/'
@@ -137,10 +139,20 @@ class Script():
         if isfile(fname):
             remove(fname)
 
-        urlretrieve("".join([self.URL, fname]), filename=fname)
+        if fname == 'ciefp-e2-settings-75e-34w.tar.gz':
+            link_settings = "".join([url_settings, "Ciefp/"])
+        elif fname == 'vhannibal-settings-e2-motor-70e-45w.tar.gz':
+            link_settings = "".join([url_settings, "Vhannibal/"])
+        elif fname == 'GioppyGio_E2_Motor_75E-45W.tar.gz':
+            link_settings = "".join([url_settings, "GioppyGio/"])
+        elif fname == 'predrag-settings-e2-motor-42e-30w.tar.gz':
+            link_settings = "".join([url_settings, "Predr@g/"])
+        urlretrieve("".join([link_settings, fname]), filename=fname)
 
-        with TarFile.open(fname) as f:
-            f.extractall('/')
+        with TarFile.open(fname) as tar_ref:
+            for member in tar_ref.getmembers():
+                tar_ref.extract(member, "/")
+        tar_ref.close()
 
         if isfile(fname):
             remove(fname)
@@ -166,9 +178,9 @@ class Script():
         """
 
         channel = """
-        (40) ciefp Motor  68°E-30°W
-        (41) Vhannibal Motor 70°E-45°W
-        (42) MOHAMED Motor 52°E-30°W"""
+        (40) ciefp Motor  68°E-30°W     (43) Predr@g Motor 42°E-30°W
+        (41) Vhannibal Motor 70°E-45°W  (44) MOHAMED Motor 52°E-30°W
+        (42) GioppyGio Motor 75°E-45°W"""
 
         print(menu, '\n', channel, '\n')
 
@@ -209,9 +221,11 @@ class Script():
                     "32": self.get_info('novacam'),
                     "33": self.get_info('novalertv'),
                     "34": self.get_info('novaipaudio'),
-                    "40": "ciefp_Motor_68E-30W.tar.gz",
-                    "41": "Vhannibal_Motor_70E-45W.tar.gz",
-                    "42": self.get_info('channel_os')}
+                    "40": "ciefp-e2-settings-75e-34w.tar.gz",
+                    "41": "vhannibal-settings-e2-motor-70e-45w.tar.gz",
+                    "42": "GioppyGio_E2_Motor_75E-45W.tar.gz",
+                    "43": "predrag-settings-e2-motor-42e-30w.tar.gz",
+                    "44": self.get_info('channel_os')}
 
         self.Main_Menu()
 
@@ -257,16 +271,20 @@ class Script():
         numbers = list(dict.fromkeys(self.list_pkg))
         numbers.sort(key=int)
         for name in numbers:
-            if name == '40' or name == '41':
+
+            if name in ['40', '41', '42', '43']:
                 self.channel(self.cam.get(name))
             else:
                 system(self.cam.get(name))
                 sleep(5)
 
             if name == '8':
-                urlretrieve("".join([self.URL, 'launcher.py']), filename='launcher.py')
-                remove('/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui/launcher.py')
-                move('launcher.py','/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
+                urlretrieve(
+                    "".join([self.URL, 'launcher.py']), filename='launcher.py')
+                remove(
+                    '/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui/launcher.py')
+                move('launcher.py',
+                     '/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
 
         if self.Stb_Image():
             system('killall -9 enigma2')
