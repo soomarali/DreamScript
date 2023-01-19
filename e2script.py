@@ -131,6 +131,7 @@ class Script():
                 self.path_dir = '/etc/tuxbox/'
             if isfile(join(self.path_dir, file)):
                 remove(join(self.path_dir, file))
+        urlretrieve('http://127.0.0.1/web/servicelistreload?mode=0')
 
     def channel(self, fname):
         url_settings = 'http://178.63.156.75/paneladdons/'
@@ -164,7 +165,7 @@ class Script():
 
         sleep(0.8)
         urlretrieve('http://127.0.0.1/web/servicelistreload?mode=0')
-        sleep(1)
+        sleep(0.8)
         print(''.join(['Channel ', fname.split('.')[0], ' Installed']))
 
     def Main_Menu(self):
