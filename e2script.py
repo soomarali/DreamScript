@@ -123,9 +123,7 @@ class Script():
                     continue
             return choice
 
-    def channel(self, fname):
-        url_settings = 'http://178.63.156.75/paneladdons/'
-
+    def delete(self):
         for file in ['lamedb', '*list', '*.tv', '*.radio', 'satellites.xml']:
             if file != 'satellites.xml':
                 self.path_dir = '/etc/enigma2/'
@@ -134,6 +132,8 @@ class Script():
             if isfile(join(self.path_dir, file)):
                 remove(join(self.path_dir, file))
 
+    def channel(self, fname):
+        url_settings = 'http://178.63.156.75/paneladdons/'
         chdir('/tmp')
 
         if isfile(fname):
@@ -147,7 +147,12 @@ class Script():
             link_settings = "".join([url_settings, "GioppyGio/"])
         elif fname == 'predrag-settings-e2-motor-42e-30w.tar.gz':
             link_settings = "".join([url_settings, "Predr@g/"])
+
         urlretrieve("".join([link_settings, fname]), filename=fname)
+
+        sleep(1)
+        self.delete()
+        sleep(1)
 
         with TarFile.open(fname) as tar_ref:
             for member in tar_ref.getmembers():
@@ -157,7 +162,9 @@ class Script():
         if isfile(fname):
             remove(fname)
 
+        sleep(0.8)
         urlretrieve('http://127.0.0.1/web/servicelistreload?mode=0')
+        sleep(1)
         print(''.join(['Channel ', fname.split('.')[0], ' Installed']))
 
     def Main_Menu(self):
