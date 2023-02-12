@@ -11,7 +11,7 @@
     "raedquicksignal": "wget https://raw.githubusercontent.com/fairbird/RaedQuickSignal/main/installer.sh  -qO - | /bin/sh",
     "ipaudio": "wget http://ipkinstall.ath.cx/ipaudio/installer-ffmpeg.sh -qO - | /bin/sh",
     "keyadder": "wget https://raw.githubusercontent.com/fairbird/KeyAdder/main/installer.sh -qO - | /bin/sh",
-    "fonotonsat": "wget https://raw.githubusercontent.com/ziko-ZR1/FootOnsat/main/Download/install.sh -qO - | /bin/sh",
+    "fonotonsat": "wget http://ipkinstall.ath.cx/ipk-install/footonsat/FootOnSat.sh -qO - | /bin/sh",
     "newvirtualkeyBoard": "wget https://raw.githubusercontent.com/fairbird/NewVirtualKeyBoard/main/installer.sh -qO - | /bin/sh",
     "epg_grabber": "wget https://raw.githubusercontent.com/ziko-ZR1/Epg-plugin/master/Download/installer.sh -qO - | /bin/sh",
     "emu": "wget -q https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Emu/installer.py; python installer.py && rm -rf $(pwd)/installer.py*",

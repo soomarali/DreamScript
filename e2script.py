@@ -296,14 +296,6 @@ class Script():
                 system(self.cam.get(name))
                 sleep(5)
 
-            if name == '8':
-                urlretrieve(
-                    "".join([self.URL, 'launcher.py']), filename='launcher.py')
-                remove(
-                    '/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui/launcher.py')
-                move('launcher.py',
-                     '/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui')
-
         print('{}(?){} Device will restart now'.format(B, C))
         if self.Stb_Image():
             system('killall -9 enigma2')
