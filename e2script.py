@@ -187,12 +187,12 @@ class Script():
         (1) AjPanel         (10) SubsSupport         (19) DreamSatPanel      (28) NordVPN
         (2) Quran           (11) NewVirtualKeyBoard  (20) JediMakerXtream    (29) ChocholousekPicons
         (3) RaedQuickSignal (12) Suptv               (21) Xstreamity         (30) OpenWebif Only DreamOS
-        (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) FreeServerCCcam
-        (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) NovaCam
-        (6) KeyAdder        (15) EMU Install         (24) AthanTimes         (33) NovalerTV
-        (7) E2IPLAYER       (16) PlutoTV             (25) BackupFlash        (34) IPAudio Only Novaler
-        (8) FootOnsat       (17) FlashOnline         (26) Multi Stalker
-        (9) IPAudio         (18) XtraEvent           (27) HasBahCa
+        (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) NovaCam
+        (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) NovalerTV
+        (6) KeyAdder        (15) EMU Install         (24) AthanTimes
+        (7) E2IPLAYER       (16) PlutoTV             (25) BackupFlash
+        (8) FootOnsat       (17) FlashOnline         (26) FreeServerCCcam
+        (9) IPAudioPlus     (18) XtraEvent           (27) HasBahCa
         """
 
         channel = """
@@ -213,7 +213,7 @@ class Script():
                     "6": self.get_info('keyadder'),
                     "7": self.get_info('e2iplayer'),
                     "8": self.get_info('fonotonsat'),
-                    "9": self.get_info('ipaudio'),
+                    "9": self.get_info('novaipaudio'),
                     "10": self.get_info('subssupport'),
                     "11": self.get_info('newvirtualkeyBoard'),
                     "12": self.get_info('suptv'),
@@ -230,15 +230,13 @@ class Script():
                     "23": self.get_info('openmultiboot'),
                     "24": self.get_info('athantimes'),
                     "25": self.get_info('backupflash'),
-                    "26": self.get_info('multi_stalker'),
+                    "26": self.get_info('freeserver'),
                     "27": self.get_info('hasbahca'),
                     "28": self.get_info('nordvpn'),
                     "29": self.get_info('chocholousekpicons'),
                     "30": self.get_info('openwebif'),
-                    "31": self.get_info('freeserver'),
-                    "32": self.get_info('novacam'),
-                    "33": self.get_info('novalertv'),
-                    "34": self.get_info('novaipaudio'),
+                    "31": self.get_info('novacam'),
+                    "32": self.get_info('novalertv'),
                     "40": "ciefp-e2-settings-75e-34w.tar.gz",
                     "41": "vhannibal-settings-e2-motor-70e-45w.tar.gz",
                     "42": "GioppyGio_E2_Motor_75E-45W.tar.gz",
@@ -255,9 +253,9 @@ class Script():
             elif name == '0':
                 self.list_pkg.extend(self.cam.get(name))
 
-                if self.hostname in ['novaler4k', 'novaler4kse', 'multibox', 'multiboxse']:
-                    self.list_pkg = list(
-                        map(lambda x: x.replace('9', '34'), self.list_pkg))
+                if not self.hostname in ['novaler4k', 'novaler4kse', 'multibox', 'multiboxse']:
+                    self.list_pkg.remove('9')
+
             else:
                 self.list_pkg.append(name)
 

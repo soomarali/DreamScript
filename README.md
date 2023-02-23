@@ -25,7 +25,7 @@ python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2
 * KeyAdder
 * E2IPLAYER
 * FootOnsat
-* IPAudio
+* IPAudioPlus Only Work For Novaler
 * SubsSupport
 * NewVirtualKeyBoard
 
