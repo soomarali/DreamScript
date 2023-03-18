@@ -6,7 +6,7 @@
 ### ✔️ Installation
 
 ```fish
-python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/e2script.py -qO -)"
+python -c "$(wget https://raw.githubusercontent.com/MOHAMED19OS/e2script/master/e2script.py -qO -)"
 ```
 
 ### ✔️ NOTE Installation
