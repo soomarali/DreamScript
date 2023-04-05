@@ -45,7 +45,7 @@ class Script():
                         'gstreamer1.0-plugins-base', 'gstreamer1.0-plugins-ugly', 'libgstplayer-1.0-0', 'python-requests', 'python-sqlite3', 'python-codecs', 'python-core', 'python-json', 'python-netclient', 'python-image']
         if version_info[0] == 3:
             self.package = list(
-                map(lambda x: x.replace('python', 'python3'), self.package))
+                map(lambda x: x.replace('python', 'python3').replace('python3-imaging', 'python3-pillow'), self.package))
 
     def banner(self):
         system('clear')
