@@ -259,6 +259,16 @@ class Script():
             else:
                 self.list_pkg.append(name)
 
+    def FixFootONsat(self):
+        target = "dif = int(timezone.replace('+', '').replace('00', ''))","dif = int(timezone.replace('-', '').replace('00', ''))"
+        src = "dif = int(timezone.replace('+', '-').replace('00', ''))", "dif = int(timezone.replace('00', ''))"
+
+        with open('/usr/lib/enigma2/python/Plugins/Extensions/FootOnSat/ui/interface.py', 'r+') as f:
+            content = f.read()
+            f.seek(0)
+            f.truncate()
+            f.write(content.replace(target[0], src[0]).replace(target[1], src[1]))
+
     def main(self):
         self.Stb_Image()
 
@@ -293,6 +303,9 @@ class Script():
             else:
                 system(self.cam.get(name))
                 sleep(5)
+
+            if name == '8':
+                self.FixFootONsat
 
         print('{}(?){} Device will restart now'.format(B, C))
         if self.Stb_Image():
