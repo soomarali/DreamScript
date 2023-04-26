@@ -25,7 +25,7 @@
     "subssupport": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/SubsSupport/installer.py -qO - | python",
     "backupflash": "wget https://raw.githubusercontent.com/fairbird/backupflash/main/installer.sh -qO - | /bin/sh",
     "hasbahca": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/HasBahCa/installer.sh -qO - | /bin/sh",
-    "nordvpn": "wget http://nordvpnconnector.dd-dns.de/nvpnc-installer_ipk.sh -qO - | /bin/sh",
+    "rakutentv": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/RakutenTV/installer.py -qO - | python",
     "chocholousekpicons": "wget https://github.com/s3n0/e2plugins/raw/master/ChocholousekPicons/online-setup -qO - | bash -s install",
     "openwebif": "wget http://tunisia-dreambox.info/TSplugins/openWebif/installer.sh -qO - | /bin/sh",
     "novacam": "wget -q https://raw.githubusercontent.com/MOHAMED19OS/Download/main/NovCam/installer.py; python installer.py && rm -rf $(pwd)/installer.py*",

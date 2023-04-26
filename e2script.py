@@ -184,7 +184,7 @@ class Script():
         menu = """
                                 (00) Exit       (0) Default
 
-        (1) AjPanel         (10) SubsSupport         (19) DreamSatPanel      (28) NordVPN
+        (1) AjPanel         (10) SubsSupport         (19) DreamSatPanel      (28) RakutenTV
         (2) Quran           (11) NewVirtualKeyBoard  (20) JediMakerXtream    (29) ChocholousekPicons
         (3) RaedQuickSignal (12) Suptv               (21) Xstreamity         (30) OpenWebif Only DreamOS
         (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) NovaCam
@@ -232,7 +232,7 @@ class Script():
                     "25": self.get_info('backupflash'),
                     "26": self.get_info('freeserver'),
                     "27": self.get_info('hasbahca'),
-                    "28": self.get_info('nordvpn'),
+                    "28": self.get_info('rakutentv'),
                     "29": self.get_info('chocholousekpicons'),
                     "30": self.get_info('openwebif'),
                     "31": self.get_info('novacam'),
