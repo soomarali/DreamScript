@@ -305,7 +305,7 @@ class Script():
                 sleep(5)
 
             if name == '8':
-                self.FixFootONsat
+                self.FixFootONsat()
 
         print('{}(?){} Device will restart now'.format(B, C))
         if self.Stb_Image():
