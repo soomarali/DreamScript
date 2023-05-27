@@ -6,9 +6,8 @@ from __future__ import print_function
 
 from json import loads
 from os import chdir, popen, remove, system
-from os.path import isdir, isfile, join
+from os.path import isfile, join
 from re import MULTILINE, findall, match
-from shutil import move
 from socket import gethostname
 from sys import version_info
 from tarfile import TarFile
@@ -212,7 +211,7 @@ class Script():
                     "5": self.get_info('youtube'),
                     "6": self.get_info('keyadder'),
                     "7": self.get_info('e2iplayer'),
-                    "8": self.get_info('fonotonsat'),
+                    "8": self.get_info('footonsat'),
                     "9": self.get_info('novaipaudio'),
                     "10": self.get_info('subssupport'),
                     "11": self.get_info('newvirtualkeyBoard'),
