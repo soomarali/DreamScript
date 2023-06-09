@@ -5,7 +5,7 @@
     "arabic_savior": "wget https://raw.githubusercontent.com/fairbird/ArabicSavior/main/installer.sh -qO - | /bin/sh",
     "youtube": "wget https://raw.githubusercontent.com/fairbird/Youtube-Opensource-DreamOS/master/installer.sh -qO - | /bin/sh",
     "iptosat": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/IPtoSAT/installer.sh -qO - | /bin/sh",
-    "e2iplayer": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/E2IPLAYER_TSiplayer/installer.sh -qO - | /bin/sh",
+    "e2iplayer": "wget 'https://gitlab.com/MOHAMED_OS/e2iplayer/-/raw/main/install-e2iplayer.sh?inline=false' -qO - | /bin/sh",
     "suptv": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Suptv/installer.sh -qO - | /bin/sh",
     "multi_stalker": "wget http://ipkinstall.ath.cx/ipk-install/Multi-Stalker/MultiStalker.sh -qO - | /bin/sh",
     "raedquicksignal": "wget https://raw.githubusercontent.com/fairbird/RaedQuickSignal/main/installer.sh  -qO - | /bin/sh",
