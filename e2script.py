@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# code: BY MOHAMED_OS
+# code: BY Asghar ali
 
 
 from __future__ import print_function
@@ -35,7 +35,7 @@ if hasattr(__builtins__, 'raw_input'):
 
 class Script():
 
-    URL = 'https://raw.githubusercontent.com/MOHAMED19OS/e2script/main/'
+    URL = 'https://raw.githubusercontent.com/soomarali/DreamScript/main/'
 
     def __init__(self):
         self.list_pkg = []
