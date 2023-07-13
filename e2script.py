@@ -188,7 +188,7 @@ class Script():
         (3) RaedQuickSignal (12) Suptv               (21) Xstreamity         (30) OpenWebif Only DreamOS
         (4) ArabicSavior    (13) IPtoSAT             (22) XcPlugin Forever   (31) NovaCam
         (5) YouTube         (14) EPG Grabber         (23) OpenMultiboot      (32) NovalerTV
-        (6) KeyAdder        (15) EMU Install         (24) AthanTimes         (33) SmartCam v7
+        (6) KeyAdder        (15) EMU Install         (24) AthanTimes         (33) SmartCam
         (7) E2IPLAYER       (16) PlutoTV             (25) BackupFlash
         (8) FootOnsat       (17) FlashOnline         (26) FreeServerCCcam
         (9) IPAudioPlus     (18) XtraEvent           (27) HasBahCa
@@ -236,7 +236,7 @@ class Script():
                     "30": self.get_info('openwebif'),
                     "31": self.get_info('novacam'),
                     "32": self.get_info('novalertv'),
-                    "33": self.get_info('SmartCam v7'),
+                    "33": self.get_info('SmartCam'),
                     "40": "ciefp-e2-settings-75e-34w.tar.gz",
                     "41": "vhannibal-settings-e2-motor-70e-45w.tar.gz",
                     "42": "GioppyGio_E2_Motor_75E-45W.tar.gz",
