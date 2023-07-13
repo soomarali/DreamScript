@@ -1,5 +1,5 @@
 {
-    "SmartCam": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/NovalerTV/installer.py -qO - | python",
+    "SmartCam": "wget https://raw.githubusercontent.com/soomarali/Download/main/SmartCam/installer.sh -qO - | /bin/sh",
     "novalertv": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/NovalerTV/installer.py -qO - | python",
     "quran": "wget https://raw.githubusercontent.com/MOHAMED19OS/Download/main/Quran/installer.sh -qO - | /bin/sh",
     "ajpanel": "wget https://raw.githubusercontent.com/biko-73/AjPanel/main/installer.sh -qO - | /bin/sh",
