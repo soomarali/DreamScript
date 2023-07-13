@@ -28,6 +28,7 @@ python -c "$(wget https://raw.githubusercontent.com/soomarali/DreamScript/main/e
 * IPAudioPlus Only Work For Novaler
 * SubsSupport
 * NewVirtualKeyBoard
+* SmartCam
 
 ### ✔️ Default Package Install
 
