@@ -203,7 +203,7 @@ class Script():
 
     def check_prompt(self):
         self.cam = {"00": exit,
-                    "0": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+                    "0": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","33"],
                     "1": self.get_info('ajpanel'),
                     "2": self.get_info('quran'),
                     "3": self.get_info('raedquicksignal'),
