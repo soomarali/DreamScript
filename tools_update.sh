@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#
+# command wget https://raw.githubusercontent.com/soomarali/DreamScript/main/tools_update.sh -qO - | /bin/sh
 
 if python --version 2>&1 | grep -q '^Python 3\.'; then
    echo "You have Python3 image"
