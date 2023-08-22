@@ -29,6 +29,7 @@ python -c "$(wget https://raw.githubusercontent.com/soomarali/DreamScript/main/e
 * SubsSupport
 * NewVirtualKeyBoard
 * SmartCam
+* Mac Changer
 
 ### ✔️ Default Package Install
 
