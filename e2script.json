@@ -35,4 +35,5 @@
     "novaipaudio": "wget https://raw.githubusercontent.com/soomarali/Download/main/NovaIPAudio/installer.py -qO - | python",
     "pluto": "wget https://raw.githubusercontent.com/soomarali/Download/main/PlutoTV/installer.sh -qO - | /bin/sh",
     "channel_os": "wget https://raw.githubusercontent.com/soomarali/Download/main/Channel/installer.py -qO - | python"
+    "Mac Changer": "wget https://raw.githubusercontent.com/soomarali/MAC-Changer/main/Mac_Plugin/installer.sh -qO - | /bin/sh"
 }
